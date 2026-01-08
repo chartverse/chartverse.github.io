@@ -1,0 +1,1 @@
+Does the top cognitive condition's average score exceed 79, the final algorithm stage's total efficiency surpass 80, and the latest year's average growth rate exceed 20?

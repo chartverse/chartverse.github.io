@@ -1,0 +1,48 @@
+# Define datasets from visualization code
+element_complexity_data = [
+    [95, 88, 75, 60, 55, 40],
+    [85, 78, 65, 50, 45, 30],
+    [75, 68, 55, 40, 35, 20],
+    [65, 58, 45, 30, 25, 10],
+    [55, 48, 35, 20, 15, 5],
+    [45, 38, 25, 10, 5, 2]
+]
+
+element_power_data = [
+    [92, 85, 78, 72, 68, 62],
+    [88, 82, 75, 69, 65, 59],
+    [84, 79, 73, 67, 63, 57],
+    [79, 74, 68, 63, 59, 54],
+    [75, 70, 65, 60, 56, 51],
+    [71, 66, 61, 57, 53, 49]
+]
+
+compound_stability_data = [
+    [85, 90, 75, 60],
+    [70, 80, 78, 65],
+    [60, 75, 85, 90],
+    [50, 65, 70, 80],
+    [40, 55, 65, 75],
+    [30, 45, 55, 65]
+]
+
+# Extract required metrics
+element_complexity_level1 = [row[0] for row in element_complexity_data]
+element_power_low = [row[0] for row in element_power_data]
+element_stability_extreme = [row[3] for row in compound_stability_data]
+
+# Calculate efficiency metric: (Power × Stability) ÷ Complexity
+efficiency_scores = [
+    (power * stability) / complexity 
+    for power, stability, complexity in zip(
+        element_power_low, element_stability_extreme, element_complexity_level1
+    )
+]
+
+# Identify element with highest efficiency
+element_names = ['Element A', 'Element B', 'Element C', 'Element D', 'Element E', 'Element F']
+top_element = element_names[efficiency_scores.index(max(efficiency_scores))]
+
+# Output final result
+print(top_element)
+
