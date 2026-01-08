@@ -24,24 +24,48 @@
     /* 🌈 Colorful Hero Background */
     .hero-custom {
       background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%); 
-      /* 可选配色方案2: background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); */
-      padding-bottom: 2rem;
+      padding-bottom: 3rem; /* 增加底部留白 */
+      padding-top: 1rem;
     }
 
-    .hero-title {
-      color: #333;
+    /* 增大标题字体 */
+    .hero-title-custom {
+      color: #222;
       font-family: 'Google Sans', sans-serif;
       font-weight: 700;
+      font-size: 3.5rem; /* 默认大字体 */
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-subtitle-custom {
+      font-size: 1.75rem;
+      color: #4a4a4a;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+
+    /* 桌面端字体更大 */
+    @media screen and (min-width: 769px) {
+      .hero-title-custom {
+        font-size: 4.8rem; /* 桌面端超大字体，填满空间 */
+      }
+      .hero-subtitle-custom {
+        font-size: 2rem;
+      }
     }
 
     .publication-links .button {
-      margin: 5px;
+      margin: 8px 5px 0 0; /* 调整按钮间距 */
       border: 1px solid #dbdbdb;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
     }
     .publication-links .button:hover {
       background-color: #fff;
       border-color: #3273dc;
+      transform: translateY(-2px); /* 悬浮微动效果 */
+      transition: all 0.2s;
     }
 
     /* Section Styling */
@@ -68,33 +92,43 @@
       margin-top: 1rem;
     }
 
-    /* Carousel */
-    .carousel-container {
-      overflow: hidden;
-      white-space: nowrap;
-      position: relative;
-      padding: 10px 0;
-    }
-    .carousel-track {
-      display: inline-block;
-      transition: transform 0.5s ease-in-out;
-    }
-    .carousel-card {
-      display: inline-block;
-      width: 320px;
-      margin-right: 15px;
+    /* --- 修改后的 Gallery 样式 (单图模式) --- */
+    .gallery-single-view {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 420px; /* 预留高度，防止切换跳动 */
+      background-color: #f8f9fa;
       border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      background: white;
-      cursor: pointer;
+      padding: 20px;
     }
-    .carousel-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: contain;
-      background-color: #fafafa;
+
+    .gallery-image-wrapper {
+      max-width: 100%;
+      text-align: center;
+      animation: fadeEffect 0.5s ease; /* 切换时的淡入动画 */
     }
+
+    .gallery-image-wrapper img {
+      max-height: 380px;
+      width: auto;
+      max-width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      background-color: white;
+    }
+    
+    .gallery-caption {
+      margin-top: 10px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    @keyframes fadeEffect {
+      from {opacity: 0.5; transform: scale(0.98);}
+      to {opacity: 1; transform: scale(1);}
+    }
+    /* ------------------------------------- */
 
     /* Interactive QA */
     .qa-box {
@@ -131,37 +165,37 @@
 
 <section class="hero hero-custom is-medium">
   <div class="hero-body">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen"> 
       <div class="columns is-vcentered">
         
-        <div class="column is-7">
-          <h1 class="title is-1 hero-title">
+        <div class="column is-6">
+          <h1 class="hero-title-custom">
             ChartVerse
           </h1>
-          <h2 class="subtitle is-3" style="color: #4a4a4a;">
+          <h2 class="hero-subtitle-custom">
             Scaling Chart Reasoning via Reliable Programmatic Synthesis from Scratch
           </h2>
           
-          <div class="is-size-5 publication-authors mb-4">
+          <div class="is-size-5 publication-authors mb-5 mt-4">
             <span class="author-block"><strong>Anonymous Authors</strong></span><br>
             <span class="author-block is-size-6">(Affiliations Placeholder)</span>
           </div>
 
           <div class="publication-links">
             <span class="link-block">
-              <a href="https://arxiv.org/abs/YOUR_ARXIV_ID" class="button is-rounded">
+              <a href="https://arxiv.org/abs/YOUR_ARXIV_ID" class="button is-rounded is-medium">
                 <span class="icon"><i class="ai ai-arxiv"></i></span>
                 <span>arXiv</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="https://github.com/YOUR_USERNAME/ChartVerse" class="button is-rounded">
+              <a href="https://github.com/YOUR_USERNAME/ChartVerse" class="button is-rounded is-medium">
                 <span class="icon"><i class="fab fa-github"></i></span>
                 <span>Code</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="https://huggingface.co/collections/starriver030515/ChartVerse" class="button is-rounded">
+              <a href="https://huggingface.co/collections/starriver030515/ChartVerse" class="button is-rounded is-medium">
                 <span class="icon">🤗</span>
                 <span>Datasets & Models</span>
               </a>
@@ -169,13 +203,13 @@
           </div>
         </div>
 
-        <div class="column is-5">
+        <div class="column is-6 has-text-centered">
           <figure class="image">
-            <img src="static/images/teaser.png" alt="ChartVerse Teaser" style="border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); background: white;">
-            <figcaption class="has-text-centered is-size-7 mt-2">
-              <b>Figure 1:</b> The ChartVerse ecosystem synthesizes complex charts and reliable reasoning data from scratch.
-            </figcaption>
+            <img src="static/images/teaser.png" alt="ChartVerse Teaser" style="border-radius: 12px; box-shadow: 0 12px 24px rgba(0,0,0,0.15); background: white; max-height: 500px; width: auto; margin: 0 auto;">
           </figure>
+          <div class="mt-3 is-size-6 has-text-grey-darker">
+            <b>Figure 1:</b> The ChartVerse ecosystem synthesizes complex charts and reliable reasoning data from scratch.
+          </div>
         </div>
 
       </div>
@@ -187,8 +221,7 @@
   <div class="container is-max-desktop">
     <div class="content-block">
       <h2 class="title is-3 has-text-centered">Abstract</h2>
-      <div class="content has-text-justified">
-        <p>
+      <div class="content has-text-justified is-size-5"> <p>
           Chart reasoning is a critical capability for Vision Language Models (VLMs). However, the development of open-source models is severely hindered by the lack of high-quality training data. Existing datasets suffer from a dual challenge: synthetic charts are often simplistic and repetitive, while the associated QA pairs are prone to hallucinations and lack the reasoning depth required for complex tasks.
         </p>
         <p>
@@ -203,7 +236,7 @@
           </li>
         </ul>
         <p>
-          We curate <strong>ChartVerse-SFT-600K</strong> and <strong>ChartVerse-RL-40K</strong>. Experimental results demonstrate that <strong>ChartVerse-8B</strong> achieves state-of-the-art performance (64.1%), notably surpassing its teacher and rivaling the stronger Qwen3-VL-32B-Thinking.
+          We curate <strong>ChartVerse-SFT-600K</strong> and <strong>ChartVerse-RL-40K</strong> using Qwen3-VL-30B-A3B-Thinking as the teacher. Experimental results demonstrate that <strong>ChartVerse-8B</strong> achieves state-of-the-art performance, notably surpassing its teacher and rivaling the stronger Qwen3-VL-32B-Thinking.
         </p>
       </div>
     </div>
@@ -216,23 +249,24 @@
 
     <div class="content-block has-text-centered">
       <h3 class="title is-4 mb-5">Framework Overview</h3>
-      <div class="columns is-multiline is-centered is-vcentered">
-        
-        <div class="column is-5">
-           <figure class="image">
-             <img src="static/images/rpe_illustration.png" alt="RPE Illustration" style="border-radius: 8px; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-             <figcaption class="is-size-6 mt-3 has-text-weight-semibold has-text-grey-dark">Rollout Posterior Entropy (RPE)</figcaption>
-           </figure>
+      
+      <div class="mb-6"> <figure class="image is-inline-block">
+          <img src="static/images/rpe_illustration.png" alt="RPE Illustration" style="border-radius: 8px; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 900px;">
+        </figure>
+        <div class="is-size-6 mt-2 has-text-weight-semibold has-text-grey-dark">
+          Figure 2: Rollout Posterior Entropy (RPE)
         </div>
-
-        <div class="column is-7">
-           <figure class="image">
-             <img src="static/images/pipeline.png" alt="Pipeline Overview" style="border-radius: 8px; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-             <figcaption class="is-size-6 mt-3 has-text-weight-semibold has-text-grey-dark">ChartVerse Pipeline</figcaption>
-           </figure>
-        </div>
-
       </div>
+
+      <div>
+        <figure class="image is-inline-block">
+          <img src="static/images/pipeline.png" alt="Pipeline Overview" style="border-radius: 8px; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 900px;">
+        </figure>
+        <div class="is-size-6 mt-2 has-text-weight-semibold has-text-grey-dark">
+          Figure 3: ChartVerse Pipeline
+        </div>
+      </div>
+      
     </div>
 
     <div class="content-block">
@@ -289,12 +323,12 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 section-title">Datasets & Comparison</h2>
     <div class="content-block">
-      <p class="mb-5">
+      <p class="mb-5 is-size-5">
         We compare <strong>ChartVerse-SFT-600K</strong> with mainstream chart reasoning datasets. ChartVerse achieves superior diversity and complexity.
       </p>
       
       <figure class="image is-centered mb-5">
-        <img src="static/images/chart_cmp.png" alt="Dataset Comparison" style="max-width: 80%; margin: 0 auto; display: block;">
+        <img src="static/images/chart_cmp.png" alt="Dataset Comparison" style="max-width: 100%; margin: 0 auto; display: block;">
       </figure>
 
       <div class="columns is-multiline">
@@ -341,21 +375,22 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 section-title">🔥 Generation Gallery</h2>
-    <p class="subtitle has-text-centered is-size-6 mb-5">
-      Swipe to see diverse, high-complexity charts synthesized by our Complexity-Aware Chart Coder.
+    <p class="subtitle has-text-centered is-size-5 mb-5"> 
+      Click arrow buttons to browse diverse, high-complexity charts synthesized by our Complexity-Aware Chart Coder.
     </p>
 
-    <div class="content-block" style="padding: 1rem;">
-      <div class="carousel-container" id="chartCarousel">
-        <div class="carousel-track" id="track">
-          </div>
+    <div class="content-block" style="padding: 2rem;">
+      <div class="gallery-single-view">
+        <div class="gallery-image-wrapper" id="gallery-wrapper">
+           </div>
       </div>
       
       <div class="has-text-centered mt-4">
-        <button class="button is-dark is-outlined is-rounded" onclick="moveCarousel(-1)">
+        <button class="button is-dark is-outlined is-rounded" onclick="updateGalleryIndex(-1)">
           <span class="icon"><i class="fas fa-chevron-left"></i></span>
         </button>
-        <button class="button is-dark is-outlined is-rounded" onclick="moveCarousel(1)">
+        <span class="is-size-5 mx-4" id="gallery-counter" style="vertical-align: middle; color: #666; font-family: monospace;">1 / 18</span>
+        <button class="button is-dark is-outlined is-rounded" onclick="updateGalleryIndex(1)">
           <span class="icon"><i class="fas fa-chevron-right"></i></span>
         </button>
       </div>
@@ -423,41 +458,62 @@
 </footer>
 
 <script>
-  // --- CAROUSEL SETUP ---
-  const track = document.getElementById('track');
-  const totalImages = 40; 
-  for (let i = 1; i <= totalImages; i++) {
-    const card = document.createElement('div');
-    card.className = 'carousel-card';
-    card.innerHTML = `<img src="static/images/carousel/${i}.png" alt="Generated Chart ${i}" onerror="this.src='https://via.placeholder.com/320x220?text=Chart+${i}'">`;
-    track.appendChild(card);
+  // --- UPDATED GALLERY SETUP (SINGLE VIEW) ---
+  const galleryWrapper = document.getElementById('gallery-wrapper');
+  const galleryCounter = document.getElementById('gallery-counter');
+  
+  let currentGalleryIndex = 1;
+  const totalGalleryImages = 18; 
+
+  function renderGallery() {
+    // 重新渲染 innerHTML 以触发动画
+    galleryWrapper.innerHTML = `
+        <img src="static/images/carousel/${currentGalleryIndex}.png" 
+             alt="Generated Chart ${currentGalleryIndex}" 
+             onerror="this.src='https://via.placeholder.com/500x350?text=Generated+Chart+${currentGalleryIndex}'">
+        <div class="gallery-caption">Generated Chart Example ${currentGalleryIndex}</div>
+    `;
+    
+    // 更新计数器
+    galleryCounter.textContent = `${currentGalleryIndex} / ${totalGalleryImages}`;
   }
 
-  function moveCarousel(direction) {
-    const container = document.getElementById('chartCarousel');
-    const scrollStep = 335; 
-    container.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+  function updateGalleryIndex(direction) {
+    currentGalleryIndex += direction;
+    
+    // 循环逻辑
+    if (currentGalleryIndex > totalGalleryImages) {
+      currentGalleryIndex = 1;
+    } else if (currentGalleryIndex < 1) {
+      currentGalleryIndex = totalGalleryImages;
+    }
+    
+    renderGallery();
   }
 
-  // --- INTERACTIVE QA SETUP ---
+  // 初始化第一张图
+  renderGallery();
+
+
+  // --- INTERACTIVE QA SETUP (Unchanged) ---
   const qaData = [
     {
       id: 1,
-      img: "static/images/qa/fig6.png", 
+      img: "static/images/qa/fig1.png", 
       q: "Does the top cognitive condition's average score exceed 79, the final algorithm stage's total efficiency surpass 80, and the latest year's average growth rate exceed 20?",
       a: "Yes",
       cot: "I need to solve this problem which has three parts to check: 1. Does the top cognitive condition's average score exceed 79? ... First, let's look at part 1... From the graph (a), Trial 1 is ~73..."
     },
     {
       id: 2,
-      img: "static/images/qa/fig7.png", 
+      img: "static/images/qa/fig2.png", 
       q: "Which region demonstrates the greatest proportional variation in annual revenue compared to its typical revenue level?",
       a: "Central America",
       cot: "The question is asking which region has the greatest proportional variation... I need to calculate the range (Max - Min) or IQR divided by the median... Looking at the chart, it is a box plot..."
     },
     {
       id: 3,
-      img: "static/images/qa/fig8.png", 
+      img: "static/images/qa/fig3.png", 
       q: "Which element achieves the greatest balance of high power and extreme-temperature stability relative to its inherent complexity?",
       a: "Element F",
       cot: "I need to look at three different charts for each element... Elemental Power Distribution... Temperature Stability... and Elemental Complexity... So for each element (A-F), I need to get..."
