@@ -2623,7 +2623,7 @@ Therefore, the final answer is <answer>F</answer>.
     const data = examplesData[key];
     if (!data) return;
 
-    document.getElementById('qa-img').src = data.image;
+    document.getElementById('qa-img').src = data.imagePath;
     document.getElementById('qa-question').textContent = data.question;
     document.getElementById('qa-answer').textContent = data.answer;
     document.getElementById('qa-code').textContent = data.code;
