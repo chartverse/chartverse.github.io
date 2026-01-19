@@ -2624,9 +2624,6 @@ Therefore, the final answer is <answer>F</answer>.
     if (!data) return;
 
     document.getElementById('qa-img').src = data.image;
-    document.getElementById('qa-img').onerror = function() {
-      this.src = 'https://via.placeholder.com/380x260/f0f0f5/6366f1?text=QA+Chart';
-    };
     document.getElementById('qa-question').textContent = data.question;
     document.getElementById('qa-answer').textContent = data.answer;
     document.getElementById('qa-code').textContent = data.code;
